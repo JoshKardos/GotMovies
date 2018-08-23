@@ -1,0 +1,94 @@
+
+{% extends 'videos/base.html' %}
+
+<!--{% if all_movies %}
+<h3>Here are all my Movies:</h3>
+<ul>
+{% for movie in all_movies %}
+<li> <a href = "{% url 'videos:detail' movie.id%}"> {{ movie.title }} </a></li> 
+{% endfor %}
+</ul>
+{% else %}
+<h3>You don't have any movies</h3>
+{% endif %}
+
+-->
+<!--ALL MOVIE -->
+{% block body %}
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    div.scrollmenu {
+        background-color: #333;
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+    div.scrollmenu a {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 14px;
+        text-decoration: none;
+    }
+
+    div.scrollmenu a:hover {
+        background-color: #777;
+    }
+</style>
+</head>
+
+<!--<div class="albums-container container-fluid">
+     Movies 
+    <h3>Here are all my Movies:</h3>
+    <div class = "scrollmenu">
+        {% for movie in all_movies %}
+        <div class="col-sm-4 col-lg-2">
+            <div class="thumbnail">
+                <a href="{% url 'videos:detail' movie.id %}">
+                    <img src= {{movie.getPosterURL}} class="img-responsive">
+                </a>
+                <div class="caption">
+                    <h2>{{ movie.title }}</h2>
+                    <h4>{{ movie.imdbRating }}</h4>
+
+                     View Details
+                    <a href= "{% url 'videos:detail' movie.id %}"class="btn btn-primary btn-sm" role="button">View Details</a>
+
+                </div>
+            </div>
+        </div>
+        {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+        {% endfor %}
+
+    </div>-->
+</div>
+
+
+<!--Movies after 2010-->
+<div class="albums-container container-fluid">
+    <h3>Here are all my Movies made in 2010:</h3>
+    <div class="scrollmenu">    
+        {% for movie in movies_in_2010 %}
+        <div class="col-sm-4 col-lg-2">
+            <div class="thumbnail">
+                <a href="{% url 'videos:detail' movie.id %}">
+                    <img src= {{movie.getPosterURL}} class="img-responsive">
+                </a>
+                <div class="caption">
+                    <h2>{{ movie.title }}</h2>
+                    <h4>Rated {{ movie.imdbRating }}</h4>
+
+                    View Details 
+                    <a href= "{% url 'videos:detail' movie.id %}"class="btn btn-primary btn-sm" role="button">View Details</a>
+
+                </div>
+            </div>
+        </div>
+        {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

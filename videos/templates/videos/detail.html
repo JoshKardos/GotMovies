@@ -1,0 +1,35 @@
+{% extends 'videos/base.html' %}
+
+<head>
+	{% block title %}Movie Details{% endblock %}
+</head>
+
+{% block body %}
+<h1> Details </h1>
+
+<img src = "{{movie.getPosterURL}}">
+
+<h2> {{movie.title}}</h2> 
+
+<h3> Rating: {{movie.imdbRating}}</h3> 
+<h3> Url: {{movie.url}}</h3> 
+<h3> Genre:
+ {% for genre in movie.getGenre %}
+	 {{genre}}/
+ {% endfor %}
+ </h3>
+{% if error_message %}
+	<p><strong>{{error_message}}</strong></p>
+{% endif %}
+
+
+<br>
+<br>
+<h2> Trailers </h2>
+<ul>
+	{% for trailer in movie.trailer_set.all%}
+	<li>{{ trailer}}  </li>
+	{% endfor %}
+</ul>
+
+{% endblock %}
